@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<ul>
+    {% for item in my_list %}
+    <li>{{item|capitalize}}</li>
+    {% endfor %}
+</ul>
+{% endblock content %}
