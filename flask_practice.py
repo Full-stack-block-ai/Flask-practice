@@ -8,15 +8,31 @@ def home():
     
     return render_template('home.html')
 
-@app.route('/signup/')
-def signup():
-    return render_template('signup.html')
+# @app.route('/signup/')
+# def signup():
+#     return render_template('signup.html')
 
-@app.route('/thank_you/')
-def thank_you():
-    first = request.args.get('first')
-    last = request.args.get('last')
-    return render_template('thank_you.html', first=first,last=last)
+@app.route('/report')
+def report():
+    username = request.args.get('username')
+    upper = False
+    lower = False
+    end_in_num = False
+
+    if any(char.isupper() for char in username):
+        upper = True
+    if any(char.islower() for char in username):
+        lower = True
+    if username[-1].isdigit():
+        end_in_num = True
+
+    report = upper and lower and end_in_num
+
+    return render_template('report.html', username=username, upper=upper, lower=lower,end_in_num=end_in_num, report=report)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 
 
@@ -33,4 +49,4 @@ def thank_you():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)

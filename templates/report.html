@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="display-5">Lets see if your username is valid.</h1>
+    {% if report %}
+    <p class="fs-3">Thats great your username passed</p>
+    {% else %}
+    <h2 class="display-6">Your username is invalid.</h2>
+    <ul>
+        {% if not upper %}<li>Your username must include an uppercase.</li>{% endif %}
+        {% if not lower %}<li>Your username must include an Lowercase.</li>{% endif %}
+        {% if not ends_in_num %}<li>Your username must end with a number.</li>{% endif %}
+    </ul>
+    {% endif %}
+
+{% endblock content %}
