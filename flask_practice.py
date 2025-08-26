@@ -1,12 +1,24 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def home():
-    my_list = ['apples', 'pears', 'bananas']
-    return render_template('home.html', my_list = my_list)
+    
+    return render_template('home.html')
+
+@app.route('/signup/')
+def signup():
+    return render_template('signup.html')
+
+@app.route('/thank_you/')
+def thank_you():
+    first = request.args.get('first')
+    last = request.args.get('last')
+    return render_template('thank_you.html', first=first,last=last)
+
+
 
 # @app.route('/dynamic/<name>')
 # def dynamic(name):

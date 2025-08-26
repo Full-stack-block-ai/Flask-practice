@@ -1,9 +1,10 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+        <p class="display-5 fw-bold">Welcome to puppy rock</p>
+        <p class="col-md-8 fs-4">Sign up for puppy band?</p>
+        <a class="btn btn-primary btn-lg" href="{{url_for('signup')}}">Sign up for auditions here!</a>
+    </div>
+</div>
 
-{% block content %}
-<ul>
-    {% for item in my_list %}
-    <li>{{item|capitalize}}</li>
-    {% endfor %}
-</ul>
 {% endblock content %}
